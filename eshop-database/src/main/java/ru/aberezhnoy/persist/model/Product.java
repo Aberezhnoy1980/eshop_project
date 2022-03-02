@@ -30,6 +30,7 @@ public class Product {
     public Product(Long id, String name, String description, BigDecimal price, Category category) {
         this.id = id;
         this.name = name;
+//        this.brand = brand;
         this.description = description;
         this.price = price;
         this.category = category;
@@ -47,7 +48,7 @@ public class Product {
         return name;
     }
 
-    public void setName (String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
