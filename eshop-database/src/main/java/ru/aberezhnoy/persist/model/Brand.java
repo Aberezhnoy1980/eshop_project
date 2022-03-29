@@ -5,27 +5,25 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "categories")
-public class Category {
+@Table(name = "brands")
+public class Brand {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name", unique = true)
+    @Column(name = "name")
     private String name;
 
-    @OneToMany(
-            mappedBy = "category",
-            orphanRemoval = true,
-            cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "brand")
+    @Column(name = "name")
     private List<Product> products;
 
-    public Category() {
+    public Brand() {
     }
 
-    public Category(Long id, String name) {
+    public Brand(Long id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -56,10 +54,11 @@ public class Category {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || this.getClass() != o.getClass()) return false;
-        Category category = (Category) o;
-        return Objects.equals(id, category.id) && Objects.equals(name, category.name);
+        if (this == o) return this == o;
+        if (o == null || this.getClass() != o.getClass())
+            return false;
+        Brand brand = (Brand) o;
+        return id.equals(brand.id) && name.equals(brand.name);
     }
 
     @Override

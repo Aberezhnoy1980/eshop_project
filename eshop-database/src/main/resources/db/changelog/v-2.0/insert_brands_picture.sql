@@ -1,0 +1,22 @@
+INSERT INTO `brands` (`name`)
+    VALUE ('Apple'),
+      ('Aser'),
+      ('Samsung'),
+      ('Sony'),
+      ('Dell'),
+      ('HP'),
+      ('Lenovo'),
+      ('Huawei'),
+      ('ASUS'),
+      ('Xiaomi'),
+      ('Phillips'),
+      ('JVC'),
+      ('LG'),
+      ('Canon'),
+      ('Panasonic'),
+      ('Nicon'),
+      ('Fujifilm'),
+      ('Bose'),
+      ('JBL'),
+      ('Defender');
+GO
