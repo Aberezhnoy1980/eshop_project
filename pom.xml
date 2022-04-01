@@ -28,6 +28,7 @@
         <module>eshop-backend-api-app</module>
         <module>eshop-database</module>
         <module>picture-service</module>
+        <module>commons</module>
     </modules>
 
 </project>

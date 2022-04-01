@@ -9,12 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import ru.aberezhnoy.NotFoundException;
 import ru.aberezhnoy.controller.dto.CategoryListParams;
 import ru.aberezhnoy.service.CategoryService;
 import ru.aberezhnoy.controller.dto.CategoryDto;
 
 import javax.validation.Valid;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/category")
