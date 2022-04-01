@@ -4,9 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import ru.aberezhnoy.controller.dto.BrandDto;
+import ru.aberezhnoy.controller.dto.BrandListParams;
 import ru.aberezhnoy.controller.dto.CategoryDto;
+import ru.aberezhnoy.controller.dto.CategoryListParams;
+import ru.aberezhnoy.persist.BrandSpecification;
 import ru.aberezhnoy.persist.CategoryRepository;
+import ru.aberezhnoy.persist.CategorySpecification;
+import ru.aberezhnoy.persist.model.Brand;
 import ru.aberezhnoy.persist.model.Category;
 
 import java.util.List;
@@ -31,8 +38,20 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Page<CategoryDto> findAll(Integer page, Integer size, String sortField) {
-        return categoryRepository.findAll(PageRequest.of(page, size, Sort.by(sortField)))
+    public Page<CategoryDto> findWithFilter(CategoryListParams categoryListParams) {
+        Specification<Category> spec = Specification.where(null);
+
+        if (categoryListParams.getCategoryNameFilter() != null && !categoryListParams.getCategoryNameFilter().isBlank()) {
+            spec = spec.and(CategorySpecification.categoryPrefix(categoryListParams.getCategoryNameFilter()));
+        }
+
+        return categoryRepository.findAll(spec,
+                        PageRequest.of(
+                                Optional.ofNullable(categoryListParams.getPage()).orElse(1) - 1,
+                                Optional.ofNullable(categoryListParams.getSize()).orElse(3),
+                                Sort.by(Optional.ofNullable(categoryListParams.getSortField())
+                                        .filter(c -> !c.isBlank())
+                                        .orElse("id"))))
                 .map(category -> new CategoryDto(category.getId(), category.getName()));
     }
 

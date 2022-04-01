@@ -2,6 +2,7 @@ package ru.aberezhnoy.service;
 
 import org.springframework.data.domain.Page;
 import ru.aberezhnoy.controller.dto.BrandDto;
+import ru.aberezhnoy.controller.dto.BrandListParams;
 import ru.aberezhnoy.controller.dto.CategoryDto;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public interface BrandService {
 
     List<BrandDto> findAll();
 
-    Page<BrandDto> findAll(Integer page, Integer size, String sortField);
+    Page<BrandDto> findWithFilter(BrandListParams brandListParams);
 
     Optional<BrandDto> findById(Long id);
 

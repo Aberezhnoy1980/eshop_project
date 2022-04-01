@@ -2,6 +2,7 @@ package ru.aberezhnoy.service;
 
 import org.springframework.data.domain.Page;
 import ru.aberezhnoy.controller.dto.CategoryDto;
+import ru.aberezhnoy.controller.dto.CategoryListParams;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,7 +11,7 @@ public interface CategoryService {
 
     List<CategoryDto> findAll();
 
-    Page<CategoryDto> findAll(Integer page, Integer size, String sortField);
+    Page<CategoryDto> findWithFilter(CategoryListParams categoryListParams);
 
     Optional<CategoryDto> findById(Long id);
 

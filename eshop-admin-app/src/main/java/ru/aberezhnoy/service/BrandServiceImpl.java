@@ -4,10 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import ru.aberezhnoy.controller.dto.BrandDto;
+import ru.aberezhnoy.controller.dto.BrandListParams;
 import ru.aberezhnoy.controller.dto.CategoryDto;
 import ru.aberezhnoy.persist.BrandRepository;
+import ru.aberezhnoy.persist.BrandSpecification;
 import ru.aberezhnoy.persist.CategoryRepository;
 import ru.aberezhnoy.persist.model.Brand;
 import ru.aberezhnoy.persist.model.Category;
@@ -34,8 +37,20 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
-    public Page<BrandDto> findAll(Integer page, Integer size, String sortField) {
-        return brandRepository.findAll(PageRequest.of(page, size, Sort.by(sortField)))
+    public Page<BrandDto> findWithFilter(BrandListParams brandListParams) {
+        Specification<Brand> spec = Specification.where(null);
+
+        if (brandListParams.getBrandNameFilter() != null && !brandListParams.getBrandNameFilter().isBlank()) {
+            spec = spec.and(BrandSpecification.brandPrefix(brandListParams.getBrandNameFilter()));
+        }
+
+        return brandRepository.findAll(spec,
+                        PageRequest.of(
+                                Optional.ofNullable(brandListParams.getPage()).orElse(1) - 1,
+                                Optional.ofNullable(brandListParams.getSize()).orElse(5),
+                                Sort.by(Optional.ofNullable(brandListParams.getSortField())
+                                        .filter(c -> !c.isBlank())
+                                        .orElse("id"))))
                 .map(brand -> new BrandDto(brand.getId(), brand.getName()));
     }
 

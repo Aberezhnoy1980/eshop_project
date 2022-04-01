@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import ru.aberezhnoy.controller.dto.CategoryListParams;
 import ru.aberezhnoy.service.CategoryService;
 import ru.aberezhnoy.controller.dto.CategoryDto;
 
@@ -29,16 +30,21 @@ public class CategoryController {
     }
 
     @GetMapping
-    public String listPage(@RequestParam("Page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size, @RequestParam("sortField") Optional<String> sortField, Model model) {
-        model.addAttribute("categories", categoryService.findAll(page.orElse(1) - 1, size.orElse(5), sortField.filter(fld -> !fld.isBlank()).orElse("id")));
+    public String listPage(Model model, CategoryListParams categoryListParams) {
+        model.addAttribute("categories", categoryService.findWithFilter(categoryListParams));
         return "categories";
     }
 
     @ModelAttribute
+    public void addAttributes(Model model) {
+        model.addAttribute("activePage", "Category");
+    }
+
+    @GetMapping("/new")
     public String newCategoryForm(Model model) {
         logger.info("New category page requested");
 
-        model.addAttribute(("category"), new CategoryDto());
+        model.addAttribute("category", new CategoryDto());
         return "category_form";
     }
 
@@ -50,7 +56,6 @@ public class CategoryController {
                 .orElseThrow(() -> new NotFoundException("Category not found")));
         return "category_form";
     }
-
 
     @PostMapping
     public String update(@Valid @ModelAttribute("category") CategoryDto category, BindingResult result) {
@@ -72,9 +77,9 @@ public class CategoryController {
     }
 
     @ExceptionHandler
-    public ModelAndView notFoundExceptionHandler(NotFoundException exception) {
+    public ModelAndView notFoundExceptionHandler(NotFoundException ex) {
         ModelAndView modelAndView = new ModelAndView("not_found");
-        modelAndView.addObject("message", exception.getMessage());
+        modelAndView.addObject("message", ex.getMessage());
         modelAndView.setStatus(HttpStatus.NOT_FOUND);
         return modelAndView;
     }

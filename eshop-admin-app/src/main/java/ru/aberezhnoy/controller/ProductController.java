@@ -27,9 +27,10 @@ public class ProductController {
     private final CategoryService categoryService;
 
     @Autowired
-    public ProductController(ProductService productService, CategoryService categoryService) {
-        this.categoryService = categoryService;
+    public ProductController(ProductService productService,
+                              CategoryService categoryService) {
         this.productService = productService;
+        this.categoryService = categoryService;
     }
 
     @GetMapping
@@ -98,7 +99,7 @@ public class ProductController {
     @ExceptionHandler
     public ModelAndView notFoundExceptionHandler(NotFoundException exception) {
         ModelAndView modelAndView = new ModelAndView("not_found");
-        modelAndView.addObject("messgae", exception.getMessage());
+        modelAndView.addObject("message", exception.getMessage());
         modelAndView.setStatus(HttpStatus.NOT_FOUND);
         return modelAndView;
     }

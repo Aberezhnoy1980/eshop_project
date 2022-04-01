@@ -4,9 +4,9 @@
                    xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
 
-    <include file="db.changelog-20220302-113007490.xml" relativeToChangelogFile="true"/>
+    <include file="db.changelog-20220329-201657111.xml" relativeToChangelogFile="true"/>
 
-    <changeSet id="1646220612599-12" author="alex">
+    <changeSet id="1648585022333-17" author="alex">
         <sqlFile path="init_default_users_roles_categories_script.sql"
                  dbms="mysql"
                  endDelimiter="GO"
