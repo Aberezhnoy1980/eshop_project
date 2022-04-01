@@ -39,6 +39,15 @@
                     </select>
                 </div>
                 <div class="form-group">
+                    <label for="brands">Brand</label>
+                    <select class="form-control" id="brands" name="brand" required>
+                        <option th:each="brand : ${brands}"
+                                th:text="${brand.name}"
+                                th:value="${brand.id}"
+                                th:selected="${product.brand?.id == brand.id}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label>Add product images</label>
                     <input type="file" class="form-control" id="newPicture" th:field="*{newPicture}"
                            placeholder="New images" multiple>

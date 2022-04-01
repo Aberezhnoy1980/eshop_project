@@ -2,8 +2,8 @@ package ru.aberezhnoy.controller.dto;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,6 +12,8 @@ public class ProductDto {
     private Long id;
 
     private String name;
+
+    private BrandDto brand;
 
     private String description;
 
@@ -26,14 +28,23 @@ public class ProductDto {
     public ProductDto() {
     }
 
-    public ProductDto(Long id, String name, String description, BigDecimal price,
+    public ProductDto(Long id, String name, BrandDto brand, String description, BigDecimal price,
                       CategoryDto category, List<Long> pictures) {
         this.id = id;
         this.name = name;
+        this.brand = brand;
         this.description = description;
         this.price = price;
         this.category = category;
         this.pictures = pictures;
+    }
+
+    public BrandDto getBrand() {
+        return brand;
+    }
+
+    public void setBrand(BrandDto brand) {
+        this.brand = brand;
     }
 
     public Long getId() {
@@ -92,16 +103,19 @@ public class ProductDto {
         this.newPicture = newPicture;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof ProductDto)) return false;
         ProductDto that = (ProductDto) o;
-        return getId().equals(that.getId()) && getName().equals(that.getName()) && getDescription().equals(that.getDescription()) && getPrice().equals(that.getPrice()) && getCategory().equals(that.getCategory());
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getName(), that.getName()) && Objects.equals(getBrand(), that.getBrand()) && Objects.equals(getDescription(), that.getDescription()) && Objects.equals(getPrice(), that.getPrice()) && Objects.equals(getCategory(), that.getCategory()) && Arrays.equals(getNewPicture(), that.getNewPicture()) && Objects.equals(getPictures(), that.getPictures());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getDescription(), getPrice(), getCategory());
+        int result = Objects.hash(getId(), getName(), getBrand(), getDescription(), getPrice(), getCategory(), getPictures());
+        result = 31 * result + Arrays.hashCode(getNewPicture());
+        return result;
     }
 }

@@ -17,19 +17,14 @@ public class Product {
 
     @Column(name = "name", nullable = false)
     private String name;
-
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Brand brand;
-
     @Column(name = "description", length = 65535, columnDefinition = "LONGTEXT")
     private String description;
-
     @Column(name = "price")
     private BigDecimal price;
-
     @ManyToOne(optional = false)
     private Category category;
-
     @OneToMany(mappedBy = "product",
             orphanRemoval = true,
             cascade = CascadeType.ALL)
@@ -65,6 +60,10 @@ public class Product {
 
     public Brand getBrand() {
         return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
     }
 
     public void setBrand() {
