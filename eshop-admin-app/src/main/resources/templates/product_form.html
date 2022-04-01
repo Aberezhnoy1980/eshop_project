@@ -59,7 +59,7 @@
         <div class="container-fluid mt-4">
             <div class="card-columns" style="column-count: 5">
                 <div class="card" th:each="picId : ${product.pictures}">
-                    <img class="card-img-bottom" th:src="@{/picture/{pictureId}(pictureId=${picId})}" width="40%">
+                    <img class="card-img-bottom" th:src="@{/picture/{pictureId}(pictureId=${picId})}" width="40%" alt="image">
                 </div>
             </div>
         </div>
