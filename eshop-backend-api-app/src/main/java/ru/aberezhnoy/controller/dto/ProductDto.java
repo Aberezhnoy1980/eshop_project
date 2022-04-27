@@ -21,8 +21,6 @@ public class ProductDto {
 
     private CategoryDto category;
 
-    private MultipartFile[] newPicture;
-
     private List<Long> pictures;
 
     public ProductDto() {
@@ -95,27 +93,4 @@ public class ProductDto {
         this.pictures = pictures;
     }
 
-    public MultipartFile[] getNewPicture() {
-        return newPicture;
-    }
-
-    public void setNewPicture(MultipartFile[] newPicture) {
-        this.newPicture = newPicture;
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ProductDto)) return false;
-        ProductDto that = (ProductDto) o;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getName(), that.getName()) && Objects.equals(getBrand(), that.getBrand()) && Objects.equals(getDescription(), that.getDescription()) && Objects.equals(getPrice(), that.getPrice()) && Objects.equals(getCategory(), that.getCategory()) && Arrays.equals(getNewPicture(), that.getNewPicture()) && Objects.equals(getPictures(), that.getPictures());
-    }
-
-    @Override
-    public int hashCode() {
-        int result = Objects.hash(getId(), getName(), getBrand(), getDescription(), getPrice(), getCategory(), getPictures());
-        result = 31 * result + Arrays.hashCode(getNewPicture());
-        return result;
-    }
 }
