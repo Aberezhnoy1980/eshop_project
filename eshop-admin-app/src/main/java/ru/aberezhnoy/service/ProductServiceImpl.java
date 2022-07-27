@@ -9,13 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import ru.aberezhnoy.NotFoundException;
-import ru.aberezhnoy.controller.dto.BrandDto;
-import ru.aberezhnoy.controller.dto.CategoryDto;
-import ru.aberezhnoy.controller.dto.ProductDto;
-import ru.aberezhnoy.persist.BrandRepository;
-import ru.aberezhnoy.persist.CategoryRepository;
-import ru.aberezhnoy.persist.ProductRepository;
-import ru.aberezhnoy.persist.ProductSpecification;
+import ru.aberezhnoy.controller.dto.*;
+import ru.aberezhnoy.persist.*;
 import ru.aberezhnoy.persist.model.Brand;
 import ru.aberezhnoy.persist.model.Category;
 import ru.aberezhnoy.persist.model.Picture;
@@ -59,6 +54,24 @@ public class ProductServiceImpl implements ProductService {
         }
         return productRepository.findAll(spec, PageRequest.of(page, size, Sort.by(sortField)))
                 .map(this::toProductDto);
+    }
+
+    @Override
+    public Page<ProductDto> findWithFilter(ProductListParams productListParams) {
+        Specification<Product> spec = Specification.where(null);
+
+        if (productListParams.getProductNameFilter() != null && !productListParams.getProductNameFilter().isBlank()) {
+            spec = spec.and(ProductSpecification.byName(productListParams.getProductNameFilter()));
+        }
+
+        return productRepository.findAll(spec,
+                        PageRequest.of(
+                                Optional.ofNullable(productListParams.getPage()).orElse(1) - 1,
+                                Optional.ofNullable(productListParams.getSize()).orElse(5),
+                                Sort.by(Optional.ofNullable(productListParams.getSortField())
+                                        .filter(c -> !c.isBlank())
+                                        .orElse("id"))))
+                .map(product -> new ProductDto(product.getId(), product.getName()));
     }
 
     @Override

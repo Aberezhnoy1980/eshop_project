@@ -1,8 +1,9 @@
 package ru.aberezhnoy.controller.dto;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class BrandDto {
+public class BrandDto implements Serializable {
 
     private Long id;
 
@@ -39,7 +40,7 @@ public class BrandDto {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o ==null || this.getClass() != o.getClass()) return false;
+        if (o == null || this.getClass() != o.getClass()) return false;
         BrandDto brandDto = (BrandDto) o;
         return Objects.equals(id, brandDto.id) && Objects.equals(name, brandDto.name);
     }

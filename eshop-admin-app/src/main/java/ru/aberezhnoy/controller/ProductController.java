@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import ru.aberezhnoy.NotFoundException;
 import ru.aberezhnoy.controller.dto.ProductDto;
+import ru.aberezhnoy.controller.dto.ProductListParams;
 import ru.aberezhnoy.service.BrandService;
 import ru.aberezhnoy.service.CategoryService;
 import ru.aberezhnoy.service.ProductService;
@@ -40,13 +41,16 @@ public class ProductController {
 
     @GetMapping
     public String listPage(
+            ProductListParams productListParams,
             @RequestParam("categoryId") Optional<Long> categoryId,
             @RequestParam("brandId") Optional<Long> brandId,
             @RequestParam("namePattern") Optional<String> namePattern,
             @RequestParam("page") Optional<Integer> page,
             @RequestParam("size") Optional<Integer> size,
-            @RequestParam("sortField") Optional<String> sortField, Model model
+            @RequestParam("sortField") Optional<String> sortField,
+            Model model
     ) {
+        model.addAttribute("products", productService.findWithFilter(productListParams));
         model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("brands", brandService.findAll());
         model.addAttribute("products", productService.findAll(
