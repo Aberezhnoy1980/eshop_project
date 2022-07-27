@@ -1,0 +1,12 @@
+1. homework1 = https://github.com/Aberezhnoy1980/eshop_project/pull/1 = branch homework1
+2. homework2 = https://github.com/Aberezhnoy1980/eshop_project/pull/3 = branch homework2
+3. homework3 = https://github.com/Aberezhnoy1980/eshop_project/pull/4 = branch classwork3
+4. homework4 = https://github.com/Aberezhnoy1980/eshop_project/pull/5 = branch classwork4
+5. homework5 = https://github.com/Aberezhnoy1980/eshop_project/pull/6 = branch classwork5
+6. homework6 = https://github.com/Aberezhnoy1980/eshop_project/pull/7 = branch classwork6
+7. homework7 = https://github.com/Aberezhnoy1980/eshop_project/pull/8 = branch classwork7
+8. homework8 = https://github.com/Aberezhnoy1980/eshop_project/pull/9 = branch classwork8
+9. homework9 = https://github.com/Aberezhnoy1980/eshop_project/pull/10 = branch classwork9
+10. homework10 = https://github.com/Aberezhnoy1980/eshop_project/pull/11 = branch classwork10
+11. homework11 = https://github.com/Aberezhnoy1980/eshop_project/pull/12 = branch classwork11
+12. homework11 = https://github.com/Aberezhnoy1980/eshop_project/pull/13 = branch classwork11

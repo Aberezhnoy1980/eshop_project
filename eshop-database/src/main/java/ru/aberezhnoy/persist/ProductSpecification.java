@@ -19,7 +19,7 @@ public class ProductSpecification {
     }
 
     public static Specification<Product> minPrice(BigDecimal minPrice) {
-        return (root, query, builder) -> builder.ge(root.get("prive"), minPrice);
+        return (root, query, builder) -> builder.ge(root.get("price"), minPrice);
     }
 
     public static Specification<Product> maxPrice(BigDecimal maxPrice) {

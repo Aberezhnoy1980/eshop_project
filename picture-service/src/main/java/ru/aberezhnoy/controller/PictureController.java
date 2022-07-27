@@ -3,15 +3,13 @@ package ru.aberezhnoy.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import ru.aberezhnoy.service.PictureService;
 
-import java.util.function.Function;
-
-@Controller
+@RestController
 @RequestMapping("/picture")
 public class PictureController {
 
@@ -42,7 +40,7 @@ public class PictureController {
                         .header(HttpHeaders.CONTENT_TYPE, pic.getContentType())
                         .body(pic.getData())
                 ).orElse(ResponseEntity
-                .notFound()
-                .build());
+                        .notFound()
+                        .build());
     }
 }

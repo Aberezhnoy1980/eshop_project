@@ -2,6 +2,7 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
+<!-- TODO сделать пагинацию (Previous & Next) -->
 <div th:fragment="paginator(data, linkFragment)" class="col-12" th:if="${data.hasContent()}">
     <nav aria-label="...">
         <ul class="pagination">

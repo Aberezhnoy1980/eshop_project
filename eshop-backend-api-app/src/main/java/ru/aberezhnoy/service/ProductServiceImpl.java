@@ -28,7 +28,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<ProductDto> findAll(Optional<Long> categoryId, Optional<Long> brandId, Optional<String> namePattern, Integer page, Integer size, String sortField) {
+    public Page<ProductDto> findAll(Optional<Long> categoryId, Optional<Long> brandId, Optional<String> namePattern,
+                                    Integer page, Integer size, String sortField) {
         Specification<Product> spec = Specification.where(null);
         if (categoryId.isPresent() && categoryId.get() != -1) {
             spec = spec.and(ProductSpecification.byCategory(categoryId.get()));
@@ -39,12 +40,14 @@ public class ProductServiceImpl implements ProductService {
         if (namePattern.isPresent()) {
             spec = spec.and(ProductSpecification.byName(namePattern.get()));
         }
-        return productRepository.findAll(spec, PageRequest.of(page, size, Sort.by(sortField))).map(this::toProductDto);
+        return productRepository.findAll(spec, PageRequest.of(page, size, Sort.by(sortField)))
+                .map(this::toProductDto);
     }
 
     @Override
     public Optional<ProductDto> findById(Long id) {
-        return productRepository.findById(id).map(this::toProductDto);
+        return productRepository.findById(id)
+                .map(this::toProductDto);
     }
 
     private ProductDto toProductDto(Product product) {
