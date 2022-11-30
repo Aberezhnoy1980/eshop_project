@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {AddLineItemDto} from "../model/add-line-item-dto";
 import {Observable} from "rxjs";
@@ -10,9 +10,10 @@ import {LineItem} from "../model/line-item";
 })
 export class CartService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
-  public findAll() : Observable<AllCartDto> {
+  public findAll(): Observable<AllCartDto> {
     return this.http.get<AllCartDto>('api/v1/cart/all');
   }
 
@@ -26,8 +27,11 @@ export class CartService {
     }));
   }
 
-  // TODO на бэке надо ли делать запрос PUT или POST? Как максимально просто и дешево реализовать метод update?
   public updateLineItem(lineItem: LineItem) {
     return this.http.put<any>('api/v1/cart', lineItem);
+  }
+
+  public clear() : Observable<AllCartDto> {
+    return this.http.get<AllCartDto>('api/v1/cart/clear');
   }
 }

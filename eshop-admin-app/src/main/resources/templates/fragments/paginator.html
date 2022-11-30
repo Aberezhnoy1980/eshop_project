@@ -6,8 +6,11 @@
 <div th:fragment="paginator(data, linkFragment)" class="col-12" th:if="${data.hasContent()}">
     <nav aria-label="...">
         <ul class="pagination">
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1">Previous</a>
+            <li class="page-item"
+                th:classappend="${data.first} ? 'disabled'">
+                <a th:fragment="paginatorLink" class="page-link"
+                   th:classappend="${data == data}"
+                   th:href="@{/data(categoryId=${param.categoryId}, brandId=${param.brandId}, namePattern=${param.namePattern}, page=${data.number}, size=${data.size}, sortField=${param.sortField})}">Previous</a>
             </li>
 
             <li th:each="num : ${#numbers.sequence(1, data.totalPages)}"
@@ -16,8 +19,10 @@
                 <a th:replace="${linkFragment}">1</a>
             </li>
 
-            <li class="page-item">
-                <a class="page-link" href="#">Next</a>
+            <li class="page-item"
+                th:classappend="${data.last} ? 'disabled'">
+                <a th:fragment="paginatorLink" class="page-link"
+                   th:href="@{/product(categoryId=${param.categoryId}, brandId=${param.brandId}, namePattern=${param.namePattern}, page=${data.number + 2}, size=${data.size}, sortField=${param.sortField})}">Next</a>
             </li>
         </ul>
     </nav>

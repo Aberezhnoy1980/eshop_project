@@ -3,7 +3,9 @@ package ru.aberezhnoy.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import ru.aberezhnoy.aspect.TrackTime;
 import ru.aberezhnoy.controller.dto.AddLineItemDto;
 import ru.aberezhnoy.controller.dto.AllCartDto;
 import ru.aberezhnoy.controller.dto.ProductDto;
@@ -13,6 +15,7 @@ import ru.aberezhnoy.service.dto.LineItem;
 
 import java.util.List;
 
+@PreAuthorize("isAuthenticated()")
 @RequestMapping("v1/cart")
 @RestController
 public class CartController {
@@ -29,6 +32,7 @@ public class CartController {
         this.productService = productService;
     }
 
+    @TrackTime
     @PostMapping(produces = "application/json", consumes = "application/json")
     public List<LineItem> addToCart(@RequestBody AddLineItemDto addLineItemDto) {
         logger.info("New LineItem. ProductId = {}, qty = {}", addLineItemDto.getProductId(), addLineItemDto.getQty());
@@ -52,7 +56,9 @@ public class CartController {
 
     @DeleteMapping(consumes = "application/json")
     public void deleteLineItem(@RequestBody LineItem lineItem) {
-        cartService.removeProduct(lineItem.getProductDto(), lineItem.getColor(), lineItem.getMaterial());
+        cartService.removeProduct(lineItem.getProductDto(),
+                lineItem.getColor(),
+                lineItem.getMaterial());
     }
 
     @DeleteMapping
@@ -63,5 +69,10 @@ public class CartController {
     @GetMapping("/all")
     public AllCartDto findAll() {
         return new AllCartDto(cartService.getLineItems(), cartService.getSubTotal());
+    }
+
+    @GetMapping("/clear")
+    public void clear() {
+        cartService.clear();
     }
 }

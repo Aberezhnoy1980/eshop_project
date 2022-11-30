@@ -14,7 +14,7 @@ public class ProductListParams {
         return productNameFilter;
     }
 
-    public void setProductNameFilter(String brandNameFilter) {
+    public void setProductNameFilter(String productNameFilter) {
         this.productNameFilter = productNameFilter;
     }
 

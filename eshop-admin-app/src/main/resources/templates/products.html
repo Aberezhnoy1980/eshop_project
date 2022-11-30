@@ -20,7 +20,9 @@
                 <div class="form-group mb-2 mr-2">
                     <label for="categoryId" class="sr-only">Categories</label>
                     <select class="form-control" id="categoryId" name="categoryId">
-                        <option th:selected="${param.categoryId == null || param.categoryId[0].isBlank()}" value="-1">All categories</option>
+                        <option th:selected="${param.categoryId == null || param.categoryId[0].isBlank()}" value="-1">
+                            All categories
+                        </option>
                         <option th:each="cat : ${categories}"
                                 th:text="${cat.name}"
                                 th:value="${cat.id}"
@@ -32,7 +34,9 @@
                 <div class="form-group mb-2 mr-2">
                     <label for="brandId" class="sr-only">Brands</label>
                     <select class="form-control" id="brandId" name="brandId">
-                        <option th:selected="${param.brandId == null || param.brandId[0].isBlank()}" value="-1">All brands</option>
+                        <option th:selected="${param.brandId == null || param.brandId[0].isBlank()}" value="-1">All
+                            brands
+                        </option>
                         <option th:each="brand : ${brands}"
                                 th:text="${brand.name}"
                                 th:value="${brand.id}"
@@ -58,9 +62,12 @@
                 <tr>
                     <th scope="col" th:replace="fragments/sort_header :: sort_header_product ('Id', 'id')"></th>
                     <th scope="col" th:replace="fragments/sort_header :: sort_header_product ('Name', 'name')"></th>
-                    <th scope="col" th:replace="fragments/sort_header :: sort_header_product ('Brand', 'brand.name')"></th>
-                    <th scope="col" th:replace="fragments/sort_header :: sort_header_product ('Category', 'category.name')"></th>
-                    <th scope="col" th:replace="fragments/sort_header :: sort_header_product ('Description', 'description')"></th>
+                    <th scope="col"
+                        th:replace="fragments/sort_header :: sort_header_product ('Brand', 'brand.name')"></th>
+                    <th scope="col"
+                        th:replace="fragments/sort_header :: sort_header_product ('Category', 'category.name')"></th>
+                    <th scope="col"
+                        th:replace="fragments/sort_header :: sort_header_product ('Description', 'description')"></th>
                     <th scope="col" th:replace="fragments/sort_header :: sort_header_product ('Price', 'price')"></th>
                     <th scope="col">Actions</th>
                 </tr>
@@ -90,10 +97,11 @@
             </table>
         </div>
 
+
         <div th:replace="fragments/paginator.html :: paginator(${products}, ~{::paginatorLink})">
             <a th:fragment="paginatorLink" class="page-link"
                th:text="${num}"
-               th:href="@{/product(categoryId=${param.categoryId}, namePattern=${param.namePattern}, page=${num}, size=${data.size}, sortField=${param.sortField})}">1</a>
+               th:href="@{/product(categoryId=${param.categoryId}, brandId=${param.brandId}, namePattern=${param.namePattern}, page=${num}, size=${data.size}, sortField=${param.sortField})}">1</a>
         </div>
     </div>
 </div>
