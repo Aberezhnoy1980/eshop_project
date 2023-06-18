@@ -27,6 +27,7 @@
         <module>eshop-admin-app</module>
         <module>eshop-backend-api-app</module>
         <module>eshop-database</module>
+        <module>picture-service</module>
     </modules>
 
 </project>

@@ -16,6 +16,14 @@ public class User {
     @Column(name = "username", nullable = false, unique = true)
     private String username;
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Column(name = "password", nullable = false)
     private String password;
 
