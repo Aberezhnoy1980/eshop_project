@@ -9,15 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import ru.aberezhnoy.NotFoundException;
 import ru.aberezhnoy.controller.dto.BrandDto;
 import ru.aberezhnoy.controller.dto.BrandListParams;
-import ru.aberezhnoy.controller.dto.CategoryDto;
-import ru.aberezhnoy.persist.model.Brand;
 import ru.aberezhnoy.service.BrandService;
-import ru.aberezhnoy.service.CategoryService;
 
 import javax.validation.Valid;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/brand")

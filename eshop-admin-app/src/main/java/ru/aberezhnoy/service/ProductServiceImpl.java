@@ -8,7 +8,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
-import ru.aberezhnoy.controller.NotFoundException;
+import ru.aberezhnoy.NotFoundException;
 import ru.aberezhnoy.controller.dto.BrandDto;
 import ru.aberezhnoy.controller.dto.CategoryDto;
 import ru.aberezhnoy.controller.dto.ProductDto;
@@ -23,7 +23,6 @@ import ru.aberezhnoy.persist.model.Product;
 
 import java.io.IOException;
 import java.util.Optional;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service
