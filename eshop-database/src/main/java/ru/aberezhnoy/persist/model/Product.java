@@ -99,12 +99,12 @@ public class Product {
         if (this == o) return true;
         if (o == null || this.getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return id.equals(product.id);
+        return id.equals(product.id) && name.equals(product.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(id, name);
     }
 
     public List<Picture> getPictures() {

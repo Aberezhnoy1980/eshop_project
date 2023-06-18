@@ -6,7 +6,7 @@ import ru.aberezhnoy.persist.model.User;
 public class UserSpecification {
 
     public static Specification<User> usernamePrefix(String prefix) {
-        return (root, query, builder) -> builder.like(root.get("username"), prefix + "%");
+        return (root, query, builder) -> builder.like(root.get("username"), "%" + prefix + "%");
     }
 
     public static Specification<User> minAge(Integer minAge) {

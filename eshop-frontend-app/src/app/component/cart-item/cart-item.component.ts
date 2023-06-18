@@ -46,7 +46,7 @@ export class CartItemComponent implements OnInit {
   // }
 
   // TODO увязать все элементы для реализации метода update
-  updateLineItem(qty: number) {
+  updateLineItem() {
     if (this._lineItem) {
       this.cartService.updateLineItem(this._lineItem)
         .subscribe(
