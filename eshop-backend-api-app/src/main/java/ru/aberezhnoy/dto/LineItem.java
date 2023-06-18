@@ -1,8 +1,7 @@
-package ru.aberezhnoy.service.dto;
+package ru.aberezhnoy.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import ru.aberezhnoy.controller.dto.ProductDto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

@@ -1,0 +1,28 @@
+POST http://localhost:8081/api/v1/login
+accept: */*
+Content-Type: application/json
+
+{"password":"admin","username":"admin","authorities":[{"authority":"ROLE_ADMIN"}],"accountNonExpired":true,"accountNonLocked":true,"credentialsNonExpired":true,"enabled":true}
+
+
+###
+
+POST http://localhost:8081/api/v1/order/item
+accept: */*
+Content-Type: application/json
+
+
+{"id": 92, "orderId": 65, "productId": 14, "productName": "Telephone", "price": 12000, "qty": 1, "color": "", "material":  ""}
+
+###
+
+ curl -X 'POST' \
+  'http://localhost:8081/api/v1/login' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "username": "admin",
+  "password": "admin"
+}'
+
+###

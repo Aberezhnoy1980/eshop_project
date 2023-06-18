@@ -1,4 +1,6 @@
-package ru.aberezhnoy.controller.dto;
+package ru.aberezhnoy.dto;
+
+import ru.aberezhnoy.persist.model.OrderLineItem;
 
 import java.math.BigDecimal;
 
@@ -41,6 +43,17 @@ public class OrderLineItemDto {
         this.material = material;
     }
 
+    public OrderLineItemDto(OrderLineItem orderLineItem) {
+        this.id = orderLineItem.getId();
+        this.orderId = orderLineItem.getOrder().getId();
+        this.productId = orderLineItem.getProduct().getId();
+        this.productName = orderLineItem.getProduct().getName();
+        this.price = orderLineItem.getPrice();
+        this.qty = orderLineItem.getQty();
+        this.color = orderLineItem.getColor();
+        this.material = orderLineItem.getMaterial();
+    }
+
     public Long getId() {
         return id;
     }
@@ -57,7 +70,7 @@ public class OrderLineItemDto {
         this.orderId = orderId;
     }
 
-    public long getProductId() {
+    public Long getProductId() {
         return productId;
     }
 
@@ -103,5 +116,9 @@ public class OrderLineItemDto {
 
     public void setMaterial(String material) {
         this.material = material;
+    }
+
+    public BigDecimal getOrderItemTotal() {
+        return getPrice().multiply(new BigDecimal(qty));
     }
 }

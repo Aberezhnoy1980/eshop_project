@@ -2,7 +2,6 @@ package ru.aberezhnoy.persist;
 
 import org.springframework.data.jpa.domain.Specification;
 import ru.aberezhnoy.persist.model.Brand;
-import ru.aberezhnoy.persist.model.User;
 
 public class BrandSpecification {
 

@@ -88,7 +88,7 @@ public class OrderLineItem {
         return color;
     }
 
-    public void SetColor(String color) {
+    public void setColor(String color) {
         this.color = color;
     }
 

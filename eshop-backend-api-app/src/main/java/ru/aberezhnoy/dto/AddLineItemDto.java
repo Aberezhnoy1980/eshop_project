@@ -1,4 +1,4 @@
-package ru.aberezhnoy.controller.dto;
+package ru.aberezhnoy.dto;
 
 public class AddLineItemDto {
 

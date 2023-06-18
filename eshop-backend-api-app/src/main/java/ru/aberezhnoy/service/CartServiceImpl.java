@@ -4,15 +4,16 @@ import com.fasterxml.jackson.annotation.*;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
-import ru.aberezhnoy.controller.dto.ProductDto;
-import ru.aberezhnoy.service.dto.LineItem;
+import ru.aberezhnoy.dto.ProductDto;
+import ru.aberezhnoy.dto.LineItem;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
+import java.util.function.BiConsumer;
+import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 
 @Service
@@ -37,6 +38,12 @@ public class CartServiceImpl implements CartService {
         LineItem lineItem = new LineItem(productDto, color, material);
         lineItems.put(lineItem, lineItems.getOrDefault(lineItem, 0) + qty);
     }
+
+//    @Override
+//    public void updateProduct(ProductDto productDto, String color, String material, int qty) {
+//        LineItem lineItem = new LineItem(productDto, color, material);
+//        lineItems.keySet().spliterator().
+//    }
 
     @Override
     public void removeProductQty(ProductDto productDto, String color, String material, int qty) {

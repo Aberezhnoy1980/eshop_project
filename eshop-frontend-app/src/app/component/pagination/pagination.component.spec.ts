@@ -10,7 +10,7 @@ describe('PaginationComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ PaginationComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

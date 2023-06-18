@@ -1,27 +1,33 @@
-package ru.aberezhnoy.controller.dto;
+package ru.aberezhnoy.dto;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import ru.aberezhnoy.persist.model.Brand;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class CategoryDto implements Serializable {
+public class BrandDto implements Serializable {
 
     private Long id;
 
     private String name;
 
-    public CategoryDto() {
+    public BrandDto() {
     }
 
-    public CategoryDto(Long id) {
+    public BrandDto(Long id) {
         this.id = id;
     }
 
-    public CategoryDto(Long id, String name) {
+    public BrandDto(Long id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public BrandDto(Brand brand) {
+        this.id = brand.getId();
+        this.name = brand.getName();
     }
 
     public Long getId() {
@@ -43,9 +49,9 @@ public class CategoryDto implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || o.getClass() != this.getClass()) return false;
-        CategoryDto categoryDto = (CategoryDto) o;
-        return Objects.equals(id, categoryDto.id) && Objects.equals(name, categoryDto.name);
+        if (o == null || this.getClass() != o.getClass()) return false;
+        BrandDto brandDto = (BrandDto) o;
+        return Objects.equals(id, brandDto.id) && Objects.equals(name, brandDto.name);
     }
 
     @Override

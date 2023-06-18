@@ -1,8 +1,13 @@
-package ru.aberezhnoy.controller.dto;
+package ru.aberezhnoy.dto;
+
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import ru.aberezhnoy.persist.model.Order;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class OrderDto {
 
     private Long id;
@@ -25,15 +30,28 @@ public class OrderDto {
                     List<OrderLineItemDto> orderLineItems) {
         this.id = id;
         this.orderDate = orderDate;
+        this.status = status;
         this.username = username;
         this.orderLineItems = orderLineItems;
     }
 
-    public long getId() {
+    public OrderDto(Order order) {
+        this.id = order.getId();
+        this.orderDate = order.getOrderDate();
+        this.status = order.getStatus().name();
+        this.username = order.getUser().getUsername();
+        this.orderLineItems = order
+                .getOrderLineItems()
+                .stream()
+                .map(li -> new OrderLineItemDto())
+                .collect(Collectors.toList());
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -69,4 +87,3 @@ public class OrderDto {
         this.orderLineItems = orderLineItems;
     }
 }
-

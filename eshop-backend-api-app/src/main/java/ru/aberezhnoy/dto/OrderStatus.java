@@ -1,4 +1,4 @@
-package ru.aberezhnoy.service.dto;
+package ru.aberezhnoy.dto;
 
 public class OrderStatus {
 

@@ -1,7 +1,8 @@
-package ru.aberezhnoy.controller.dto;
+package ru.aberezhnoy.dto;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import ru.aberezhnoy.persist.model.Product;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -38,6 +39,16 @@ public class ProductDto implements Serializable {
         this.price = price;
         this.category = category;
         this.pictures = pictures;
+    }
+
+    public ProductDto(Product product, BrandDto brandDto, CategoryDto categoryDto) {
+        this.id = product.getId();
+        this.name = product.getName();
+        this.brand = brandDto;
+        this.category = categoryDto;
+        this.description = product.getDescription();
+        this.price = product.getPrice();
+        this.pictures = getPictures();
     }
 
     public BrandDto getBrand() {

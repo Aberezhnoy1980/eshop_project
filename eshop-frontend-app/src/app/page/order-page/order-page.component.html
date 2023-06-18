@@ -18,12 +18,13 @@
         <td>{{order.price}}</td>
         <td>{{order.status}}</td>
         <td>
-          <a class="btn btn-success me-2" href="#"><i class="fas fa-edit"></i></a>
-          <a class="btn btn-danger" href="#"><i class="fas fa-stop"></i></a>
+          <a class="btn btn-success me-2" (click)="updateOrder(order.id)"><i class="fas fa-edit"></i></a>
+          <a class="btn btn-danger" (click)="deleteOrder(order)"><i class="far fa-trash-alt"></i></a>
         </td>
       </tr>
       </tbody>
     </table>
+    <button class="btn btn-danger" (click)="clear()">Clear orders</button>
   </div>
 
 </div>

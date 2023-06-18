@@ -1,0 +1,13 @@
+<th scope="row">1</th>
+<td>{{orderLineItem?.productName}}</td>
+<td>
+  <input type="number" [(ngModel)]="qty" class="form-control w-25"/>
+</td>
+<td>{{orderLineItem?.material}}</td>
+<td>{{orderLineItem?.material}}</td>
+<td>{{orderLineItem?.price}}</td>
+<td>
+  <!-- TODO передал qty из счетчика в метод. Необходимо его реализовать -->
+  <a class="btn btn-success me-2" (click)="updateOrderLineItem()"><i class="fas fa-check-circle"></i></a>
+  <a class="btn btn-danger" (click)="deleteOrderLineItem()"><i class="far fa-trash-alt"></i></a>
+</td>

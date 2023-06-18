@@ -6,6 +6,7 @@ import {CartPageComponent} from "./page/cart-page/cart-page.component";
 import {OrderPageComponent} from "./page/order-page/order-page.component";
 import {LoginPageComponent} from "./page/login-page/login-page.component";
 import {AuthGuard} from "./helper/auth-guard";
+import {OrderEditPageComponent} from "./page/order-edit-page/order-edit-page.component";
 
 const routes: Routes = [
   {path: "", pathMatch: "full", redirectTo: "product"},
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: "cart", component: CartPageComponent, canActivate: [AuthGuard]},
   {path: "login", component: LoginPageComponent},
   {path: "logout", component: LoginPageComponent},
-  {path: "order", component: OrderPageComponent, canActivate: [AuthGuard]}
+  {path: "order", component: OrderPageComponent, canActivate: [AuthGuard]},
+  {path: "order/:id", component: OrderEditPageComponent}
 ];
 
 @NgModule({

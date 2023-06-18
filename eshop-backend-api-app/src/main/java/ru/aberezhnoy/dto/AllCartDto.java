@@ -1,6 +1,6 @@
-package ru.aberezhnoy.controller.dto;
+package ru.aberezhnoy.dto;
 
-import ru.aberezhnoy.service.dto.LineItem;
+import ru.aberezhnoy.dto.LineItem;
 
 import java.math.BigDecimal;
 import java.util.List;

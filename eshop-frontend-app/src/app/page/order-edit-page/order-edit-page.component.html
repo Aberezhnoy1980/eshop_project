@@ -1,0 +1,40 @@
+<div class="row py-2">
+
+  <div class="col-md-9 col-xs-12 mb-3">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Product name</th>
+<!--        <th scope="col">Color</th>-->
+<!--        <th scope="col">Material</th>-->
+        <th scope="col">Count</th>
+        <th scope="col">Price</th>
+        <th scope="col">Total</th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr app-order-item
+          *ngFor="let orderLineItem of content?.orderLineItems"
+          [orderLineItem]="orderLineItem"
+          (updated)="orderUpdated()">
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-md-3 col-xs-12">
+    <div class="card">
+      <div class="card-body">
+        <h2>Order summary</h2>
+        <p>Position count: {{content?.orderLineItems?.length}}</p>
+        <p>Total $: {{content?.subtotal}}</p>
+        <button class="btn btn-primary me-2">Save changes</button>
+      </div>
+    </div>
+  </div>
+
+</div>
