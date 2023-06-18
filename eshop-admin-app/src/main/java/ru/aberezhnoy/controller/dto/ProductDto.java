@@ -28,6 +28,11 @@ public class ProductDto {
     public ProductDto() {
     }
 
+    public ProductDto(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public ProductDto(Long id, String name, BrandDto brand, String description, BigDecimal price,
                       CategoryDto category, List<Long> pictures) {
         this.id = id;

@@ -41,10 +41,11 @@
                     </select>
                 </div>
 
+                <!-- TODO разобраться почему не работает фильтр по имени. -->
                 <div class="form-group mb-2 mr-2">
-                    <label for="usernameFilter" class="sr-only">Product name</label>
-                    <input type="text" class="form-control" id="usernameFilter" th:value="${param.usernameFilter}"
-                           name="usernameFilter" placeholder="Username filter">
+                    <label for="productNameFilter" class="sr-only">Product name</label>
+                    <input type="text" class="form-control" id="productNameFilter" th:value="${param.productNameFilter}"
+                           name="productNameFilter" placeholder="Product filter">
                 </div>
 
                 <button type="submit" class="btn btn-primary mb-2">Apply</button>
@@ -59,6 +60,7 @@
                     <th scope="col" th:replace="fragments/sort_header :: sort_header_product ('Name', 'name')"></th>
                     <th scope="col" th:replace="fragments/sort_header :: sort_header_product ('Brand', 'brand.name')"></th>
                     <th scope="col" th:replace="fragments/sort_header :: sort_header_product ('Category', 'category.name')"></th>
+                    <th scope="col" th:replace="fragments/sort_header :: sort_header_product ('Description', 'description')"></th>
                     <th scope="col" th:replace="fragments/sort_header :: sort_header_product ('Price', 'price')"></th>
                     <th scope="col">Actions</th>
                 </tr>
@@ -69,6 +71,7 @@
                     <td th:text="${product.name}">Product</td>
                     <td th:text="${product.brand.name}">Brand</td>
                     <td th:text="${product.category.name}">Category</td>
+                    <td th:text="${product.description}">Description</td>
                     <td th:text="${product.price}">$100</td>
                     <td>
                         <a class="btn btn-success" th:href="@{/product/{id}(id = ${product.id})}"><i

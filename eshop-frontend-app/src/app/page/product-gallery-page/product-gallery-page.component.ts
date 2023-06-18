@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {ProductService} from "../../service/product.service";
 import {Product} from "../../model/product";
 import {Page} from "../../model/page";
@@ -20,7 +20,7 @@ export class ProductGalleryPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.productService.findAll().subscribe(res => {
+    this.productService.findAll().subscribe( res => {
       console.log("Loading products");
       this.page = res;
       this.products = res.content;
@@ -45,7 +45,7 @@ export class ProductGalleryPageComponent implements OnInit {
       this.page = res;
       this.products = res.content;
     }, err => {
-      console.log(`Error loading item ${err}`);
+      console.log(`Error loading products ${err}`);
     });
   }
 }
