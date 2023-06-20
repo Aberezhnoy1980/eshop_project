@@ -1,7 +1,7 @@
 package ru.aberezhnoy.service;
 
-import ru.aberezhnoy.controller.dto.ProductDto;
-import ru.aberezhnoy.service.dto.LineItem;
+import ru.aberezhnoy.dto.ProductDto;
+import ru.aberezhnoy.dto.LineItem;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

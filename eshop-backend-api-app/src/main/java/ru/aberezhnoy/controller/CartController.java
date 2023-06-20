@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import ru.aberezhnoy.aspect.TrackTime;
-import ru.aberezhnoy.controller.dto.AddLineItemDto;
-import ru.aberezhnoy.controller.dto.AllCartDto;
-import ru.aberezhnoy.controller.dto.ProductDto;
+import ru.aberezhnoy.dto.AddLineItemDto;
+import ru.aberezhnoy.dto.AllCartDto;
+import ru.aberezhnoy.dto.LineItem;
+import ru.aberezhnoy.dto.ProductDto;
 import ru.aberezhnoy.service.CartService;
 import ru.aberezhnoy.service.ProductService;
-import ru.aberezhnoy.service.dto.LineItem;
 
 import java.util.List;
 
@@ -43,27 +43,16 @@ public class CartController {
         return cartService.getLineItems();
     }
 
-    //TODO реализовать на фронте метод update (счетчик кол-ва в корзине) при изменении количества меняется totalItem & subTotal, происходит добавление/удаление по количеству
-    @PutMapping(produces = "application/json", consumes = "application/json")
-    public void updateLineItemByQty(@RequestBody LineItem lineItem, @RequestBody int qty) {
-        if (qty > lineItem.getQty())
-            cartService.addProductQty(lineItem.getProductDto(), lineItem.getColor(), lineItem.getMaterial(), lineItem.getQty());
-        else if (qty < lineItem.getQty())
-            cartService.removeProductQty(lineItem.getProductDto(), lineItem.getColor(), lineItem.getMaterial(), lineItem.getQty());
-        else
-            cartService.removeProduct(lineItem.getProductDto(), lineItem.getColor(), lineItem.getMaterial());
-    }
+//    @PutMapping(produces = "application/json", consumes = "application/json")
+//    public LineItem updateLineItem(@RequestBody LineItem lineItem) {
+//        return cartService.updateProduct(lineItem);
+//    }
 
     @DeleteMapping(consumes = "application/json")
     public void deleteLineItem(@RequestBody LineItem lineItem) {
         cartService.removeProduct(lineItem.getProductDto(),
                 lineItem.getColor(),
                 lineItem.getMaterial());
-    }
-
-    @DeleteMapping
-    public void deleteLineItemQty(@RequestBody LineItem lineItem) {
-        cartService.removeProductQty(lineItem.getProductDto(), lineItem.getColor(), lineItem.getMaterial(), lineItem.getQty());
     }
 
     @GetMapping("/all")

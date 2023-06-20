@@ -31,21 +31,7 @@ export class CartItemComponent implements OnInit {
     return this._lineItem;
   }
 
-  // updateLineItem(qty: number) {
-  //   if (this._lineItem) {
-  //     this.cartService.updateLineItem(this._lineItem)
-  //       .subscribe(
-  //         res => {
-  //           this.updated.emit();
-  //         },
-  //         error => {
-  //           console.log(error)
-  //         }
-  //       )
-  //   }
-  // }
 
-  // TODO увязать все элементы для реализации метода update
   updateLineItem() {
     if (this._lineItem) {
       this.cartService.updateLineItem(this._lineItem)

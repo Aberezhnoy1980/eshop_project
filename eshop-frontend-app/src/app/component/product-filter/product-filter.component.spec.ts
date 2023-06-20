@@ -10,7 +10,7 @@ describe('ProductFilterComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ ProductFilterComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

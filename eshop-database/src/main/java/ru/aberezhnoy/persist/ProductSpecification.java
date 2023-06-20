@@ -1,6 +1,8 @@
 package ru.aberezhnoy.persist;
 
 import org.springframework.data.jpa.domain.Specification;
+import ru.aberezhnoy.persist.model.Brand;
+import ru.aberezhnoy.persist.model.Category;
 import ru.aberezhnoy.persist.model.Product;
 
 import java.math.BigDecimal;
@@ -12,6 +14,14 @@ public class ProductSpecification {
     }
     public static Specification<Product> byBrand(Long brandId) {
         return (root, query, builder) -> builder.equal(root.get("brand").get("id"), brandId);
+    }
+
+    public static Specification<Product> byCategoryName(String categoryPrefix) {
+        return (root, query, builder) -> builder.like(root.get("name"), "%" + categoryPrefix + "%");
+    }
+
+    public static Specification<Product> byBrandName(String brandPrefix) {
+        return (root, query, builder) -> builder.like(root.get("name"), "%" + brandPrefix + "%");
     }
 
     public static Specification<Product> byName(String pattern) {

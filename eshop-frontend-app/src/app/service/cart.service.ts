@@ -22,6 +22,7 @@ export class CartService {
   }
 
   public removeLineItem(lineItem: LineItem) {
+    console.log("invoke")
     return this.http.delete('api/v1/cart', ({
       body: lineItem
     }));

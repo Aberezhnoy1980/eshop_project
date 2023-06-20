@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Page} from "../../model/page";
-import {Product} from "../../model/product";
+import {ProductFilters} from "../../model/ProductFilters";
+import {Category} from "../../model/category";
+import {Brand} from "../../model/brand";
 
 @Component({
   selector: 'app-product-filter',
@@ -9,17 +10,26 @@ import {Product} from "../../model/product";
 })
 export class ProductFilterComponent implements OnInit {
 
-  nameFilter: string = '';
+  @Output() filterApplied = new EventEmitter<ProductFilters>();
 
-  @Output() filterApplied = new EventEmitter<string>();
+  @Input() categories: Category [] = [];
 
-  constructor() { }
+  @Input() brands: Brand [] = [];
+
+  productFilters = new ProductFilters('', '', '', -1, -1, 0, 10000000);
+
+  constructor() {
+  }
 
   ngOnInit(): void {
+
   }
 
   applyFilter() {
-    this.filterApplied.emit(this.nameFilter);
+    this.filterApplied.emit(this.productFilters);
   }
 
+  reset() {
+    this.filterApplied.emit(new ProductFilters('', '', '', -1, -1, 0, 10000000));
+    }
 }

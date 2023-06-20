@@ -8,9 +8,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 public class EshopBackendApiAppApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(EshopBackendApiAppApplication.class, args);
+
     }
 
     @Bean

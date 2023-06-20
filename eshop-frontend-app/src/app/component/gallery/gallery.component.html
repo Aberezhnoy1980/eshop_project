@@ -2,12 +2,16 @@
 
   <div class="col" *ngFor="let prod of products">
     <div class="card">
-      <a routerLink="/product/{{prod.id}}"><img class="card-img-top" src="/api/picture/{{prod.pictures[0]}}" alt="Card image cap"></a>
+      <a routerLink="/product/{{prod.id}}"><img class="card-img-top" src="/api/picture/{{prod.pictures[0]}}"
+                                                alt="Card image cap"></a>
       <div class="card-body">
         <h5 class="card-title">{{prod.name}}</h5>
         <p class="card-text">{{prod.description}}</p>
-        <a routerLink="/product/{{prod.id}}" class="btn btn-primary" style="margin: 5px">View</a>
-        <a (click)="addToCart(prod.id)" class="btn btn-primary" style="margin: 5px">Add to card</a>
+        <p class="card-text">{{prod.price | currency}}</p>
+        <div style="display: flex; justify-content: center">
+          <a routerLink="/product/{{prod.id}}" class="btn btn-primary" style="margin: 5px">View</a>
+          <a (click)="addToCart(prod.id)" class="btn btn-primary" style="margin: 5px">Add to card</a>
+        </div>
       </div>
     </div>
   </div>

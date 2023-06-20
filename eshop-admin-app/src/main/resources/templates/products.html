@@ -45,11 +45,10 @@
                     </select>
                 </div>
 
-                <!-- TODO разобраться почему не работает фильтр по имени. -->
                 <div class="form-group mb-2 mr-2">
-                    <label for="productNameFilter" class="sr-only">Product name</label>
-                    <input type="text" class="form-control" id="productNameFilter" th:value="${param.productNameFilter}"
-                           name="productNameFilter" placeholder="Product filter">
+                    <label for="namePattern" class="sr-only">Product name</label>
+                    <input type="text" class="form-control" id="namePattern" th:value="${param.namePattern}"
+                           name="namePattern" placeholder="Product filter">
                 </div>
 
                 <button type="submit" class="btn btn-primary mb-2">Apply</button>

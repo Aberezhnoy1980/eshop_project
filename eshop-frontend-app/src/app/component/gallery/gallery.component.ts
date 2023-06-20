@@ -18,7 +18,7 @@ export class GalleryComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addToCart(id: number) {
+  addToCart(id: bigint) {
     this.cartService.addToCart(new AddLineItemDto(id, 1, "", ""))
       .subscribe();
   }

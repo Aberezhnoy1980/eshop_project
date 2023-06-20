@@ -2,7 +2,7 @@ import {Category} from "./category";
 import {Brand} from "./brand";
 
 export class Product {
-  constructor(public id: number,
+  constructor(public id: bigint,
               public name: string,
               public brand: Brand,
               public description: string,
