@@ -16,6 +16,7 @@ import ru.aberezhnoy.controller.dto.CategoryDto;
 
 import javax.validation.Valid;
 
+
 @Controller
 @RequestMapping("/category")
 public class CategoryController {
