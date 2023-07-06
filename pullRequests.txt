@@ -6,7 +6,7 @@
 6. homework6 = https://github.com/Aberezhnoy1980/eshop_project/pull/7 = branch classwork6 = done
 7. homework7 = https://github.com/Aberezhnoy1980/eshop_project/pull/9 = branch classwork7 = done
 8. homework8 = https://github.com/Aberezhnoy1980/eshop_project/pull/11 = branch classwork8 = done
-9. homework9 = https://github.com/Aberezhnoy1980/eshop_project/pull/10 = branch classwork9
-10. homework10 = https://github.com/Aberezhnoy1980/eshop_project/pull/11 = branch classwork10
-11. homework11 = https://github.com/Aberezhnoy1980/eshop_project/pull/12 = branch classwork11
-12. homework12 = https://github.com/Aberezhnoy1980/eshop_project/pull/13 = branch classwork12
+9. homework9 = https://github.com/Aberezhnoy1980/eshop_project/pull/12 = branch classwork9 = done
+10. homework10 = https://github.com/Aberezhnoy1980/eshop_project/pull/13 = branch classwork10
+11. homework11 = https://github.com/Aberezhnoy1980/eshop_project/pull/14 = branch classwork11
+12. homework12 = https://github.com/Aberezhnoy1980/eshop_project/pull/15 = branch classwork12

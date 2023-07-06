@@ -33,6 +33,7 @@
         <module>spring-eureka</module>
         <module>spring-cloud-gateway</module>
         <module>eshop-picture-service-api</module>
+        <module>eshop-delivery-service</module>
     </modules>
 
     <dependencyManagement>

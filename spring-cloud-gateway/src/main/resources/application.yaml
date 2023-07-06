@@ -13,15 +13,15 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: shop-backend-api
-          uri: lb://SHOP-BACKEND-API
+        - id: eshop-backend-api
+          uri: lb://ESHOP-BACKEND-API
           predicates:
             - Path=/api/v1/**
-        - id: shop-admin
-          uri: lb://SHOP-ADMIN
+        - id: eshop-admin
+          uri: lb://ESHOP-ADMIN
           predicates:
             - Path=/admin/**
-        - id: shop-picture-service-api
-          uri: lb://SHOP-PICTURE-SERVICE-API
+        - id: eshop-picture-service-api
+          uri: lb://ESHOP-PICTURE-SERVICE-API
           predicates:
           - Path=/api/**
