@@ -94,6 +94,16 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.amqp</groupId>-->
+<!--            <artifactId>spring-rabbit</artifactId>-->
+<!--        </dependency>-->
+
     </dependencies>
 
     <build>
@@ -117,7 +127,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <repository>registry.heroku.com/geek-${project.artifactId}/web</repository>
+                    <repository>${project.artifactId}</repository>
                     <tag>latest</tag>
                     <buildArgs>
                         <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
