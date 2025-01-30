@@ -1,13 +1,14 @@
 package ru.aberezhnoy.controller.dto;
 
-import org.springframework.web.multipart.MultipartFile;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
-public class ProductDto {
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class ProductDto implements Serializable {
 
     private Long id;
 
@@ -17,11 +18,11 @@ public class ProductDto {
 
     private String description;
 
+    @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXTERNAL_PROPERTY, property = "type")
+    @JsonSubTypes({ @JsonSubTypes.Type(name = "BIG_DECIMAL", value = BigDecimal.class) })
     private BigDecimal price;
 
     private CategoryDto category;
-
-    private MultipartFile[] newPicture;
 
     private List<Long> pictures;
 
@@ -95,27 +96,4 @@ public class ProductDto {
         this.pictures = pictures;
     }
 
-    public MultipartFile[] getNewPicture() {
-        return newPicture;
-    }
-
-    public void setNewPicture(MultipartFile[] newPicture) {
-        this.newPicture = newPicture;
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ProductDto)) return false;
-        ProductDto that = (ProductDto) o;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getName(), that.getName()) && Objects.equals(getBrand(), that.getBrand()) && Objects.equals(getDescription(), that.getDescription()) && Objects.equals(getPrice(), that.getPrice()) && Objects.equals(getCategory(), that.getCategory()) && Arrays.equals(getNewPicture(), that.getNewPicture()) && Objects.equals(getPictures(), that.getPictures());
-    }
-
-    @Override
-    public int hashCode() {
-        int result = Objects.hash(getId(), getName(), getBrand(), getDescription(), getPrice(), getCategory(), getPictures());
-        result = 31 * result + Arrays.hashCode(getNewPicture());
-        return result;
-    }
 }
